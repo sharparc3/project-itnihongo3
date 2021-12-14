@@ -5,24 +5,25 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+
         <div class="navbar-nav">
-            <%= link_to "Link1" , root_path, class:"nav-link nav-item active" %>
-            <%= link_to "Link2" , root_path, class:"nav-link nav-item active" %>
-        </div>
-        
-        <div class="navbar-nav">
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Username
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Your Profile</a>
-                    <a class="dropdown-item" href="#">Your Favorite</a>
-                    <a class="dropdown-item" href="#">Logout</a>
+            <% if user_signed_in? %>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Username
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Your Profile</a>
+                        <a class="dropdown-item" href="#">Your Favorite</a>
+                        <%= link_to "ログアウト", destroy_user_session_path,class:"dropdown-item", method: :delete  %>
+                    </div>
+                    <%= link_to "Link1" , root_path, class:"nav-link nav-item active" %>
+                    <%= link_to "Link2" , root_path, class:"nav-link nav-item active" %>
                 </div>
-            </div>
-            <%= link_to "Log in" , root_path, class:"nav-link nav-item active" %>
-            <%= link_to "Register" , root_path, class:"nav-link nav-item active" %>
+             <% else %>
+                <%= link_to "サインイン" , new_user_session_path, class:"nav-link nav-item active" %>
+                <%= link_to "ユーザ登録" , new_user_registration_path, class:"nav-link nav-item active" %>
+             <% end %>
         </div>
     </div>
 </nav>

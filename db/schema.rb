@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2021_12_13_135746) do
 # Could not dump table "foods" because of following StandardError
 #   Unknown type 'real' for column 'price'
 
+  create_table "restaurant_reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "restaurant_id"
+    t.integer "rating"
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "addresss"

@@ -67,9 +67,14 @@
                 <strong>詳細:</strong>
                 <%= @restaurant.detail %>
             </p>
+            <p class="card-text">
+                <strong>評価:</strong>
+                <%= @average_review %>
+            </p>
 
             <%= link_to '編集' , edit_restaurant_path(@restaurant), class:"btn btn-primary" %> |
-            <%= link_to '戻る' , restaurants_path, class:"btn btn-warning" %>
+            <%= link_to '戻る' , restaurants_path, class:"btn btn-warning" %> |
+
         </div>
     </div>
 
@@ -101,24 +106,41 @@
     </div>
 
     <div class="c3 p-3">
-        <h3>Comment</h3>
+        <h3>レビュー</h3>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>お名前</th>
-                    <th>Comment</th>
+                    <th>ID</th>
+                    <th>評価</th>
+                    <th>レビュー</th>
                 </tr>
             </thead>
 
-            <tbody>
+             <% @restaurant.restaurant_reviews.each do |review| %>
                 <tr>
-                    <td>Duong</td>
-                    <td>asdfsdf</td>
+                    <td>
+                        <%= review.user.id %>
+                    </td>
+                    <td>
+                        <%= review.rating %>
+                    </td>
+                    <td>
+                        <%= review.review %>
+                    </td>
                 </tr>
-            </tbody>
+            <% end %>
         </table>
-        
-        <%= link_to "Add comment" %>
+        <% found = 0 %>
+        <% @restaurant.restaurant_reviews.each do |review| %>
+            <% if review.user_id == current_user.id %>
+                <%= link_to '編集', edit_restaurant_restaurant_review_path(@restaurant, review), class:"btn btn-warning" %>
+                <%= link_to '削除', [@restaurant, review],:method => :delete, class:"btn btn-danger" %> 
+                <% found = 1 %>
+            <% end %>
+        <% end %>
+        <% if found == 0 %>
+            <%= link_to '作成', new_restaurant_restaurant_review_path(@restaurant), class:"btn btn-success" %> 
+        <% end %>
     </div>
 </div>
