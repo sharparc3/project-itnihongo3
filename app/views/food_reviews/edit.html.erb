@@ -2,5 +2,4 @@
 
 <%= render 'form', food_review: @food_review %>
 
-<%= link_to 'Show', @food_review %> |
-<%= link_to 'Back', food_reviews_path %>
+<%= link_to 'Cancel', restaurant_food_path(@restaurant,@food), class:"btn btn-warning" %>
