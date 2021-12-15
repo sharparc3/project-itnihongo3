@@ -1,0 +1,32 @@
+<%= form_with(model: [@restaurant,@food,@food_review], local: true) do |form| %>
+  <% if food_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(food_review.errors.count, "error") %> prohibited this food_review from being saved:</h2>
+
+      <ul>
+        <% food_review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+      <div class="card-body">
+          <div class="field">
+              <%= form.label :'What do you think?' %>
+              </br>
+              <%= form.text_area :review %>
+              </br>
+          </div>
+          
+      <div class="actions">
+          <%= form.submit class:"btn btn-primary", value:"Submit review" %>
+      </div>
+          
+          
+      </div>
+  </div>
+    
+  
+<% end %>
