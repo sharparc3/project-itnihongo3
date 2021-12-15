@@ -34,7 +34,7 @@
   }
 }
 </style>
-<h1 class="mb-3">Food Show</h1></br>
+<h1 class="mb-3">フード</h1></br>
 <div class="container">
     <div class="c2 card p-3">
         <% if @food.image.attached? %>
@@ -43,28 +43,28 @@
   <div class="card-body">
     <h4 class="card-title"><%= @food.name %></h4>
     <p class="card-text">
-      <strong>Description:</strong>
+      <strong>説明:</strong>
       <%= @food.description %>
     </p>
     <p class="card-text">
-        <strong>Price:</strong>
+        <strong>値段:</strong>
         <%= @food.price %>
     </p>
     
-    <%= link_to 'Edit', edit_restaurant_food_path(@restaurant, @food), class:"btn btn-warning btn-sm" %> |
-    <%= link_to "Delete", [@restaurant, @food], :method  => :delete, class:"btn btn-danger btn-sm" %> |
-    <%= link_to 'Back', restaurant_path(@restaurant), class:"btn btn-secondary btn-sm" %>
+    <%= link_to '編集', edit_restaurant_food_path(@restaurant, @food), class:"btn btn-warning btn-sm" %> |
+    <%= link_to "削除", [@restaurant, @food], :method  => :delete, class:"btn btn-danger btn-sm" %> |
+    <%= link_to '戻る', restaurant_path(@restaurant), class:"btn btn-secondary btn-sm" %>
     
   </div>
     </div>
     <div class="c1 p-3">
-        <h3>Comment</h3>
+        <h3>コメント</h3>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>お名前</th>
-                    <th>Comment</th>
+                    <th>コメント</th>
                 </tr>
             </thead>
             <% found = 0 %>
@@ -74,15 +74,17 @@
                     <td><%= food_review.user.name %></td>
                     <td><%= food_review.review %></td>
                     <% if food_review.user_id == current_user.id %>
-                        <td><%= link_to 'Edit', edit_restaurant_food_food_review_path(@restaurant,@food,food_review), class:"btn btn-warning btn-sm" %></td>
-                        <td><%= link_to 'Delete', [@restaurant,@food,food_review], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></td>
+                        <td><%= link_to '編集', edit_restaurant_food_food_review_path(@restaurant,@food,food_review), class:"btn btn-warning btn-sm" %></td>
+                        <td><%= link_to '削除', [@restaurant,@food,food_review], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %></td>
                         <% found = 1 %>
                     <% end %>
                   </tr>
                 <% end %>
             </tbody>
         </table>
-        <%= link_to "Add comment", new_restaurant_food_food_review_path(@restaurant,@food), class:"btn btn-primary btn-sm" %>
+        <% if found == 0 %>
+            <%= link_to "コメント", new_restaurant_food_food_review_path(@restaurant,@food), class:"btn btn-primary btn-sm" %>
+        <% end %>
     </div>
 </div>
 
