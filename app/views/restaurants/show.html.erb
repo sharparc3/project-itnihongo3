@@ -111,7 +111,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>お名前</th>
                     <th>評価</th>
                     <th>レビュー</th>
                 </tr>
@@ -120,7 +120,7 @@
              <% @restaurant.restaurant_reviews.each do |review| %>
                 <tr>
                     <td>
-                        <%= review.user.id %>
+                        <%= review.user.name %>
                     </td>
                     <td>
                         <%= review.rating %>
