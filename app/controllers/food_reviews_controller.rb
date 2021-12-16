@@ -42,7 +42,7 @@ class FoodReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @food_review.update(food_review_params)
-        format.html { redirect_to restaurant_food_path(@restaurant,@food), notice: "Food review was successfully updated." }
+        format.html { redirect_to restaurant_food_path(@restaurant,@food), notice: "コメントを更新しました。" }
         format.json { render :show, status: :ok, location: @food_review }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class FoodReviewsController < ApplicationController
   def destroy
     @food_review.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_food_path(@restaurant,@food), notice: "Food review was successfully destroyed." }
+      format.html { redirect_to restaurant_food_path(@restaurant,@food), notice: "コメントを削除しました。" }
       format.json { head :no_content }
     end
   end
