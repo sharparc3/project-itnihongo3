@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field from-group">
-    <%= form.label :name %></br>
+    <%= form.label :フード名 %></br>
     <%= form.text_field :name, class:"form-control" %>
   </div>
   
   <div class="field from-group">
-    <%= form.label :price %></br>
+    <%= form.label :価格 %></br>
     <%= form.number_field :price, class:"form-control" %>
   </div>
   
   <div class="field from-group">
-    <%= form.label :image %></br>
+    <%= form.label :画像 %></br>
     <%= form.file_field :image, class:"form-control" %>
   </div>
 
   <div class="field from-group">
-    <%= form.label :description %></br>
+    <%= form.label :説明 %></br>
     <%= form.text_area :description, class:"form-control" %>
   </div>
 </br>
   <div class="actions">
-    <%= form.submit class:"btn btn-primary"%>
+    <%= form.submit class:"btn btn-primary", value:"作成" %>
   </div>
 <% end %>

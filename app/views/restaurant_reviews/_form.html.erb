@@ -15,21 +15,21 @@
         <div class="card-body">
             
           <div class="field" >
-            <%= form.label :rating %>
+            <%= form.label :評価 %>
             <br>
-            <%= form.select :rating, options_for_select([["Select One", ""], "1", "2", "3", "4", "5"])%>
+            <%= form.select :rating, options_for_select([["一つ選んでください", ""], "1", "2", "3", "4", "5"])%>
           </div>
           
           <div class="field form-floating">
-          <%= form.text_area :review, class:"form-control", placeholder:"Leave a comment here", id:"floatingTextarea" %>
-           <label for="floatingTextarea">Review</label>
+          <%= form.text_area :review, class:"form-control", placeholder:"コメントを残す", id:"floatingTextarea" %>
+           <label for="floatingTextarea">レビュー</label>
         </div>
         
           <div class="actions">
-            <%= form.submit :Submit , class:"btn btn-primary" %>
+            <%= form.submit :Submit , class:"btn btn-primary", value:"提出する" %>
           </div>
           <br>
-            <%= link_to 'Back', restaurant_path(@restaurant), class:"btn btn-secondary btn-sm" %>
+            <%= link_to '戻る', restaurant_path(@restaurant), class:"btn btn-secondary btn-sm" %>
 
         </div>
     </div>
